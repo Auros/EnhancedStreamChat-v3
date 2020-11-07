@@ -1,19 +1,11 @@
-﻿using BeatSaberMarkupLanguage;
-using BeatSaberMarkupLanguage.Animations;
+﻿using BeatSaberMarkupLanguage.Animations;
 using EnhancedStreamChat.Utilities;
 using ChatCore.Interfaces;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.TextCore;
 using UnityEngine.UI;
-using IPA.Utilities.Async;
 
 namespace EnhancedStreamChat.Graphics
 {
@@ -25,7 +17,7 @@ namespace EnhancedStreamChat.Graphics
         public event Action OnLatePreRenderRebuildComplete;
 
         private static ObjectPool<EnhancedImage> _imagePool = new ObjectPool<EnhancedImage>(50,
-            Constructor: () =>
+            constructor: () =>
             {
                 var img = new GameObject().AddComponent<EnhancedImage>();
                 DontDestroyOnLoad(img.gameObject);
@@ -38,7 +30,7 @@ namespace EnhancedStreamChat.Graphics
                 img.gameObject.SetActive(false);
                 return img;
             },
-            OnFree: (img) =>
+            onFree: img =>
             {
                 try
                 {
@@ -49,7 +41,7 @@ namespace EnhancedStreamChat.Graphics
                 }
                 catch(Exception ex)
                 {
-                    Logger.log.Error($"Exception while freeing EnhancedImage in EnhancedTextMeshProUGUI. {ex.ToString()}");
+                    Logger.log.Error($"Exception while freeing EnhancedImage in EnhancedTextMeshProUGUI. {ex}");
                 }
             }
         );

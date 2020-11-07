@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnhancedStreamChat.Graphics
 {
@@ -43,7 +39,7 @@ namespace EnhancedStreamChat.Graphics
                 Rectangle rect = new Rectangle(0, 0, Width, Height);
 
                 // get source bitmap pixel format size
-                Depth = System.Drawing.Bitmap.GetPixelFormatSize(source.PixelFormat);
+                Depth = Image.GetPixelFormatSize(source.PixelFormat);
 
                 // Check if bpp (Bits Per Pixel) is 8, 24, or 32
                 if (Depth != 8 && Depth != 24 && Depth != 32)

@@ -1,0 +1,17 @@
+<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
+
+    <clickable-image src='EnhancedStreamChatPoC.Resources.Settings.png'
+                     anchor-min-x='1'
+                     anchor-max-x='1'
+                     anchor-min-y='0'
+                     anchor-max-y='0'
+                     anchor-pos-x="-4"
+                     anchor-pos-y="4"
+                     size-delta-x="7"
+                     ignore-layout="true"
+                     preserve-aspect='true'
+                     default-color='#BB1166'
+                     highlight-color='#FFFFFFFF'/>
+
+</bg>

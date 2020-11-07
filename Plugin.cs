@@ -1,55 +1,44 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Reflection;
+using EnhancedStreamChat.Zenject.Installers;
 using IPA;
 using IPA.Config;
-using IPA.Config.Stores;
-using UnityEngine.SceneManagement;
-using UnityEngine;
-using IPALogger = IPA.Logging.Logger;
-using EnhancedStreamChat.Chat;
 using IPA.Loader;
-using System.Reflection;
+using SemVer;
+using SiraUtil.Zenject;
+using IPALogger = IPA.Logging.Logger;
 
 namespace EnhancedStreamChat
 {
     [Plugin(RuntimeOptions.DynamicInit)]
     public class Plugin
     {
-        internal static Plugin instance { get; private set; }
-        internal static string Name => "EnhancedStreamChat";
-        internal static string Version => _meta.Version.ToString() ?? Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private static PluginMetadata? _metadata;
+        private static string? _name;
+        private static Version? _version;
 
-        private static PluginMetadata _meta;
+        public static string Name => _name ??= _metadata?.Name ?? Assembly.GetExecutingAssembly().GetName().Name;
+        public static Version Version => _version ??= _metadata?.Version ?? new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
         [Init]
-        public void Init(IPALogger logger, PluginMetadata meta)
+        public void Init(IPALogger logger, Config config, PluginMetadata pluginMetadata, Zenjector zenject)
         {
-            instance = this;
-            _meta = meta;
-            Logger.log = logger;
-            Logger.log.Debug("Logger initialized.");
-            var config = ChatConfig.instance;
+            _metadata = pluginMetadata;
+
+            zenject.OnApp<CoreChatInstaller>().WithParameters(logger, config);
+            zenject.OnMenu<MenuChatInstaller>();
+            zenject.OnGame<GameChatInstaller>();
         }
 
         [OnEnable]
         public void OnEnable()
         {
-            try
-            {
-                ChatManager.instance.enabled = true;
-            }
-            catch(Exception ex)
-            {
-                Logger.log.Error(ex);
-            }
+            // Nope, this will be handled by SiraUtil
         }
 
         [OnDisable]
         public void OnDisable()
         {
-            ChatManager.instance.enabled = false;
+            // NOP, this will be handled by SiraUtil
         }
     }
 }

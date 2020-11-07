@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Concurrent;
 using TMPro;
 using UnityEngine.TextCore;
 
@@ -54,7 +49,7 @@ namespace EnhancedStreamChat.Graphics
                     next = GetNextReplaceChar();
                 }
                 while (Font.characterLookupTable.ContainsKey(next));
-                Font.characterLookupTable.Add(next, new TMP_Character(next, new Glyph(next, new UnityEngine.TextCore.GlyphMetrics(0, 0, 0, 0, imageInfo.Width), new UnityEngine.TextCore.GlyphRect(0, 0, 0, 0))));
+                Font.characterLookupTable.Add(next, new TMP_Character(next, new Glyph(next, new GlyphMetrics(0, 0, 0, 0, imageInfo.Width), new GlyphRect(0, 0, 0, 0))));
                 CharacterLookupTable.TryAdd(imageInfo.ImageId, next);
                 ImageInfoLookupTable.TryAdd(next, imageInfo);
                 replaceCharacter = next;
