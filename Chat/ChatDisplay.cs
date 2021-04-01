@@ -174,7 +174,8 @@ namespace EnhancedStreamChat.Chat
                 _chatScreen.ScreenRotation = Quaternion.Euler(ChatRotation);
 
                 _bg = _chatScreen.GetComponentInChildren<ImageView>();
-                _bg.material.mainTexture = BeatSaberUtils.UINoGlowMaterial.mainTexture;
+                _bg.material = Instantiate(_bg.material);
+                _bg.material.mainTexture = Instantiate(BeatSaberUtils.UINoGlowMaterial.mainTexture);
                 _bg.color = BackgroundColor;
                 
                 AddToVRPointer();
