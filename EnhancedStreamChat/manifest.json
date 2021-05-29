@@ -3,9 +3,9 @@
   "id": "EnhancedStreamChat",
   "name": "Enhanced Stream Chat",
   "author": "brian91292",
-  "version": "3.0.0-rc9",
+  "version": "3.0.0-rc10",
   "description": "Enhanced Stream Chat is a rich text chat integration mod, with full unicode, emote, and emoji support.",
-  "gameVersion": "1.14.0",
+  "gameVersion": "1.16.1",
   "dependsOn": {
     "BeatSaberMarkupLanguage": "^1.5.3",
     "BSIPA": "^4.1.6",
