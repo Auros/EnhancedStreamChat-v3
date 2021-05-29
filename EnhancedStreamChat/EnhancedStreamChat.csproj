@@ -6,13 +6,11 @@
         <LangVersion>8</LangVersion>
         <Nullable>enable</Nullable>
         <NoWarn>1591</NoWarn>
+        <LocalRefsDir Condition="Exists('..\Refs')">..\Refs</LocalRefsDir>
+        <BeatSaberDir>$(LocalRefsDir)</BeatSaberDir>
+        <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
         <AssemblyName>EnhancedStreamChat</AssemblyName>
         <RootNamespace>EnhancedStreamChat</RootNamespace>
-        <OutDir>$(ProjectDir)bin\$(Configuration)</OutDir>
-        <ModVersion>3.0.0</ModVersion>
-        <AssemblyVersion>$(ModVersion)</AssemblyVersion>
-        <FileVersion>$(ModVersion)</FileVersion>
-        <InformationalVersion>$(ModVersion)</InformationalVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -110,11 +108,11 @@
         <EmbeddedResource Include="Resources\PizzaDog.jpg" />
     </ItemGroup>
 
-    <Target Name="CopyToPlugins" AfterTargets="AfterBuild">
-        <Message Text="Copying $(OutDir)EnhancedStreamChat.dll to Plugins folder" Importance="high" />
-        <Copy SourceFiles="$(OutDir)EnhancedStreamChat.dll" DestinationFiles="$(BeatSaberDir)\Plugins\EnhancedStreamChat.dll" />
-        <Message Text="Copying $(OutDir)EnhancedStreamChat.pdb to Plugins folder" Importance="high" />
-        <Copy SourceFiles="$(OutDir)EnhancedStreamChat.pdb" DestinationFiles="$(BeatSaberDir)\Plugins\EnhancedStreamChat.pdb" />
-    </Target>
+    <ItemGroup>
+      <PackageReference Include="BeatSaberModdingTools.Tasks" Version="1.4.3">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
 
 </Project>
