@@ -7,10 +7,10 @@
   "description": "Enhanced Stream Chat is a rich text chat integration mod, with full unicode, emote, and emoji support.",
   "gameVersion": "1.14.0",
   "dependsOn": {
-    "BeatSaberMarkupLanguage": "^1.5.2",
+    "BeatSaberMarkupLanguage": "^1.5.3",
     "BSIPA": "^4.1.6",
-    "BS Utils": "^1.8.0",
-    "ChatCore": "^2.0.0"
+    "BS Utils": "^1.10.0",
+    "ChatCore": "^2.1.2"
   },
   "links": {
     "project-home": "https://github.com/Auros/EnhancedStreamChat-v3",
