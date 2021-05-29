@@ -15,9 +15,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VRUIControls;
 using Color = UnityEngine.Color;
-using Image = UnityEngine.UI.Image;
 
 namespace EnhancedStreamChat.Chat
 {

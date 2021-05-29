@@ -2,7 +2,6 @@
 using BeatSaberMarkupLanguage.Components.Settings;
 using BeatSaberMarkupLanguage.Parser;
 using BeatSaberMarkupLanguage.ViewControllers;
-using System.Diagnostics;
 using HMUI;
 using UnityEngine;
 using UnityEngine.UI;
